@@ -8,6 +8,6 @@ type Staff struct {
 	Name     string
 	Email    string `gorm:"uniqueIndex"`
 	Password string
-	//ProductStocks []ProductStock `gorm:"foreignKey:StaffID"`
+	ProductStocks []ProductStock `gorm:"foreignKey:StaffID"`
 	Returns []Return `gorm:"foreignKey:StaffID"`
 }
