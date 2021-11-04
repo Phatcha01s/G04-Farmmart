@@ -9,9 +9,11 @@ type User struct {
 	Name     string
 	Email    string `gorm:"uniqueIndex"`
 	Password string
-
-	Order   []Order  `gorm:"foreignkey:OwnerID"`
+	
+	Orders []Order `gorm:"foreignKey:UserID"`
 	Returns []Return `gorm:"foreignKey:OwnerID"`
+	Preorders []Preorder `gorm:"foreignKey:UserID"`
+	Accounts []Account `gorm:"foreignKey:OwnerID"`
 }
 
 type Staff struct {
