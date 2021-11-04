@@ -50,8 +50,8 @@ func CreatePayment(c *gin.Context) {
 		Order:         Order,               // โยงความสัมพันธ์กับ Entity Order
 		DeliveryType:  DeliveryType,        // โยงความสัมพันธ์กับ Entity DeliveryType
 		PaymentTime:   Payment.PaymentTime, // ตั้งค่าฟิลด์ PaymentTime
-		Phone:         Payment.Phone,		// ตั้งค่าฟิลด์ Phone
-		Price:         Payment.Price,		//ตั้งค่าฟิลด์ Price
+		Phone:         Payment.Phone,       // ตั้งค่าฟิลด์ Phone
+		Price:         Payment.Price,       // ตั้งค่าฟิลด์ Price
 	}
 
 	// 13: บันทึก
