@@ -26,9 +26,19 @@ func SetupDatabase() {
 
 		// สมาชิก
 		&User{},
+		&Olduser{},
+		&Contact{},
+		&Sex{},
+		&Religion{},
+		&Account{},
 
-		// ระบบสั่งสินค้า
-		&Order{},
+		// ระบบสั่งจองสินค้า
+		&Preorder{},
+
+		// ระบบจ่ายเงิน
+		&PaymentMethod{},
+		&Payment{},
+		&DeliveryType{},
 
 		// ระบบขอคืนสินค้า
 		&Return{},
@@ -40,13 +50,9 @@ func SetupDatabase() {
 		&Supplier{},
 		&ProductStock{},
 
-		// ระบบจ่ายเงิน
-		&PaymentMethod{},
-		&Payment{},
-		&DeliveryType{},
-		
-		// ระบบสั่งจองสินค้า
-		&Preorder{},
+		// ระบบสั่งสินค้า
+		&Order{},
+		&Status{},
 	)
 	db = database
 
@@ -54,63 +60,75 @@ func SetupDatabase() {
 
 	// ข้อมูล user
 	db.Model(&User{}).Create(&User{
-		Name:     "Narudee Arunno",
-		Email:    "Narudee@gmail.com",
+		Name:     "Narudee",
+		Email:    "narudee@gmail.com",
 		Password: string(password),
 	})
 
 	db.Model(&User{}).Create(&User{
-		Name:     "Phatcha Srisuwo",
-		Email:    "Phatcha@gmail.com",
+		Name:     "Phatcha",
+		Email:    "phatcha@gmail.com",
 		Password: string(password),
 	})
 
 	db.Model(&User{}).Create(&User{
-		Name:     "Prawit",
-		Email:    "Prawit@gmail.com",
+		Name:     "Patnarin",
+		Email:    "patnarin@gmail.com",
 		Password: string(password),
 	})
+
 	db.Model(&User{}).Create(&User{
-		Name:     "Name",
+		Name:     "name",
 		Email:    "name@example.com",
 		Password: string(password),
 	})
 
 	var narudee User
 	var phatcha User
-	var prawit User
+	var patnarin User
 	var name User
-	db.Raw("SELECT * FROM users WHERE email = ?", "Narudee@gmail.com").Scan(&narudee)
-	db.Raw("SELECT * FROM users WHERE email = ?", "Phatcha@gmail.com").Scan(&phatcha)
-	db.Raw("SELECT * FROM users WHERE email = ?", "Prawit@gmail.com").Scan(&prawit)
+	db.Raw("SELECT * FROM users WHERE email = ?", "narudee@gmail.com").Scan(&narudee)
+	db.Raw("SELECT * FROM users WHERE email = ?", "phatcha@gmail.com").Scan(&phatcha)
+	db.Raw("SELECT * FROM users WHERE email = ?", "patnarin@gmail.com").Scan(&patnarin)
 	db.Raw("SELECT * FROM users WHERE email = ?", "name@example.com").Scan(&name)
-	
-	
-	// ระบบสั่งสินค้า
-	// order data
-	order1 := Order{
-		User:       narudee,
-		PreorderID: 20,
-		StatusID:   1,
-		OrderTime:  time.Now(),
-	}
 
-	db.Model(&Order{}).Create(&order1)
-
-	order2 := Order{
-		User:       phatcha,
-		PreorderID: 21,
-		StatusID:   1,
-		OrderTime:  time.Now(),
+	// ระบบชำระเงิน
+	// PaymentMethod Data
+	Method1 := PaymentMethod{
+		Method: "Bank",
 	}
-	db.Model(&Order{}).Create(&order2)
+	db.Model(&PaymentMethod{}).Create(&Method1)
+
+	Method2 := PaymentMethod{
+		Method: "Promtpay",
+	}
+	db.Model(&PaymentMethod{}).Create(&Method2)
+
+	Method3 := PaymentMethod{
+		Method: "จ่ายสดหน้าร้าน",
+	}
+	db.Model(&PaymentMethod{}).Create(&Method3)
+
+	Method4 := PaymentMethod{
+		Method: "เก็บเงินปลายทาง",
+	}
+	db.Model(&PaymentMethod{}).Create(&Method4)
+
+	// DeliveryType Data
+	type1 := DeliveryType{
+		Type: "รับสินค้าที่ร้าน",
+	}
+	db.Model(&DeliveryType{}).Create(&type1)
+
+	type2 := DeliveryType{
+		Type: "จัดส่งถึงบ้าน",
+	}
+	db.Model(&DeliveryType{}).Create(&type2)
 
 	// ระบบคลังสินค้า
 	// staff data
 	var suwanan Staff
-	//var name Staff
 	db.Raw("SELECT * FROM staffs WHERE email = ?", "suwanan@gmail.com").Scan(&suwanan)
-	//db.Raw("SELECT * FROM staffs WHERE email = ?", "name@example.com").Scan(&name)
 
 	db.Model(&Staff{}).Create(&Staff{
 		Name:     "Suwanan",
@@ -242,37 +260,156 @@ func SetupDatabase() {
 		Name: "มทส.",
 	})
 
-	// ระบบชำระเงิน
-	// PaymentMethod Data
-	Method1 := PaymentMethod{
-		Method: "Bank",
+	// ระบบสั่งจองสินค้า
+	// Status Data
+	preorder1 := Preorder{
+		Amount:        2,
+		User:          narudee,
+		Product:       durian,
+		PaymentMethod: Method1,
 	}
-	db.Model(&PaymentMethod{}).Create(&Method1)
+	db.Model(&Preorder{}).Create(&preorder1)
 
-	Method2 := PaymentMethod{
-		Method: "Promtpay",
+	preorder2 := Preorder{
+		Amount:        1,
+		User:          phatcha,
+		Product:       mango,
+		PaymentMethod: Method2,
 	}
-	db.Model(&PaymentMethod{}).Create(&Method2)
+	db.Model(&Preorder{}).Create(&preorder2)
 
-	Method3 := PaymentMethod{
-		Method: "จ่ายสดหน้าร้าน",
+	// ระบบสั่งสินค้า
+	// Status Data
+	status1 := Status{
+		Statusorder: "Confirm",
 	}
-	db.Model(&PaymentMethod{}).Create(&Method3)
+	db.Model(&Status{}).Create(&status1)
 
-	Method4 := PaymentMethod{
-		Method: "เก็บเงินปลายทาง",
+	status2 := Status{
+		Statusorder: "not sure",
 	}
-	db.Model(&PaymentMethod{}).Create(&Method4)
+	db.Model(&Status{}).Create(&status2)
 
-	// DeliveryType Data
-	type1 := DeliveryType{
-		Type: "รับสินค้าที่ร้าน",
+	// Order data
+	order1 := Order{
+		User:      narudee,
+		Preorder:  preorder1,
+		Status:    status1,
+		OrderTime: time.Now(),
 	}
-	db.Model(&DeliveryType{}).Create(&type1)
 
-	type2 := DeliveryType{
-		Type: "จัดส่งถึงบ้าน",
+	db.Model(&Order{}).Create(&order1)
+
+	order2 := Order{
+		User:      phatcha,
+		Preorder:  preorder2,
+		Status:    status1,
+		OrderTime: time.Now(),
 	}
-	db.Model(&DeliveryType{}).Create(&type2)
+	db.Model(&Order{}).Create(&order2)
+
+	// ระบบสมาชิก
+	// --- ContactType Data
+	email := Contact{
+		Ctype: "Email",
+	}
+	db.Model(&Contact{}).Create(&email)
+
+	phone := Contact{
+		Ctype: "Phone",
+	}
+	db.Model(&Contact{}).Create(&phone)
+
+	post := Contact{
+		Ctype: "Post",
+	}
+	db.Model(&Contact{}).Create(&post)
+
+	// Sex Data
+	male := Sex{
+		Stype: "Male",
+	}
+	db.Model(&Sex{}).Create(&male)
+
+	female := Sex{
+		Stype: "Female",
+	}
+	db.Model(&Sex{}).Create(&female)
+
+	// Olduser Data
+	ever := Olduser{
+		Otype: "Ever",
+	}
+	db.Model(&Olduser{}).Create(&ever)
+
+	yet := Olduser{
+		Otype: "Yet",
+	}
+	db.Model(&Olduser{}).Create(&yet)
+
+	// Religion Data
+	buddhism := Religion{
+		Rtype: "Buddhism",
+	}
+	db.Model(&Religion{}).Create(&buddhism)
+
+	christianity := Religion{
+		Rtype: "Christianity",
+	}
+	db.Model(&Religion{}).Create(&christianity)
+
+	islam := Religion{
+		Rtype: "Islam",
+	}
+	db.Model(&Religion{}).Create(&islam)
+
+	Another := Religion{
+		Rtype: "Another",
+	}
+	db.Model(&Religion{}).Create(&Another)
+
+	// Account 1
+	db.Model(&Account{}).Create(&Account{
+		Address:  "10 M.22 T.Suranaree A.Mueng",
+		Province: "Nakhonratchasrima",
+		Owner:    name,
+		Contact:  phone,
+		Sex:      female,
+		Olduser:  yet,
+		Religion: christianity,
+	})
+
+	// Account 2
+	db.Model(&Account{}).Create(&Account{
+		Address:  "Suranaree U. A.Mueng",
+		Province: "Nakhonratchasrima",
+		Owner:    phatcha,
+		Contact:  phone,
+		Sex:      female,
+		Olduser:  yet,
+		Religion: buddhism,
+	})
+
+	// Account 3
+	db.Model(&Account{}).Create(&Account{
+		Address:  "Suranaree U. A.Mueng",
+		Province: "Nakhonratchasrima",
+		Owner:    patnarin,
+		Contact:  email,
+		Sex:      female,
+		Olduser:  yet,
+		Religion: buddhism,
+	})
+
+	// Account 3
+	db.Model(&Account{}).Create(&Account{
+		Address:  "Suranaree U. A.Mueng",
+		Province: "Nakhonratchasrima",
+		Owner:    narudee,
+		Contact:  post,
+		Sex:      female,
+		Olduser:  yet,
+		Religion: buddhism,
+	})
 
 }
