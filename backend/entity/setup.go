@@ -261,7 +261,6 @@ func SetupDatabase() {
 	})
 
 	// ระบบสั่งจองสินค้า
-	// Status Data
 	preorder1 := Preorder{
 		Amount:        2,
 		User:          narudee,
