@@ -4,6 +4,24 @@ import (
 	"gorm.io/gorm"
 	"time"
 )
+type User struct {
+	gorm.Model
+	Name     string
+	Email    string `gorm:"uniqueIndex"`
+	Password string
+
+	Order   []Order  `gorm:"foreignkey:OwnerID"`
+	Returns []Return `gorm:"foreignKey:OwnerID"`
+}
+
+type Staff struct {
+	gorm.Model
+	Name          string
+	Email         string `gorm:"uniqueIndex"`
+	Password      string
+	ProductStocks []ProductStock `gorm:"foreignKey:StaffID"`
+	Returns       []Return       `gorm:"foreignKey:StaffID"`
+}
 
 type Contact struct {
 	gorm.Model
@@ -25,25 +43,6 @@ type Religion struct {
 	gorm.Model
 	Rtype    string
 	Accounts []Account `gorm:"foreignKey:ReligionID"`
-}
-
-type User struct {
-	gorm.Model
-	Name     string
-	Email    string `gorm:"uniqueIndex"`
-	Password string
-
-	Order   []Order  `gorm:"foreignkey:OwnerID"`
-	Returns []Return `gorm:"foreignKey:OwnerID"`
-}
-
-type Staff struct {
-	gorm.Model
-	Name          string
-	Email         string `gorm:"uniqueIndex"`
-	Password      string
-	ProductStocks []ProductStock `gorm:"foreignKey:StaffID"`
-	Returns       []Return       `gorm:"foreignKey:StaffID"`
 }
 
 type Supplier struct {
