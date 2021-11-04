@@ -8,7 +8,6 @@ import (
 type Order struct {
 	gorm.Model
 	PreorderID int 
-	Statusorder string
 	StatusID int
 	OwnerID    *uint
 	Ordertime  time.Time
