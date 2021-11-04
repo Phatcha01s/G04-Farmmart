@@ -25,7 +25,7 @@ func CreateOrder(c *gin.Context) {
 func ListOrderbyUser(c *gin.Context) {
 	var Order []entity.Order
 	id := c.Param("id")
-	if err := entity.DB().Preload("Owner").Raw("SELECT * FROM orders WHERE user_id = ? ",id).Find(&Order).Error; err != nil {
+	if err := entity.DB().Preload("User").Raw("SELECT * FROM orders WHERE user_id = ? ",id).Find(&Order).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -37,7 +37,7 @@ func ListOrderbyUser(c *gin.Context) {
 func GetOrder(c *gin.Context) {
 	var Order entity.Order
 	id := c.Param("id")
-	if err := entity.DB().Preload("Owner").Raw("SELECT * FROM orders WHERE id = ?", id).Find(&Order).Error; err != nil {
+	if err := entity.DB().Preload("User").Raw("SELECT * FROM orders WHERE id = ?", id).Find(&Order).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -48,7 +48,7 @@ func GetOrder(c *gin.Context) {
 // GET /Orders
 func ListOrders(c *gin.Context) {
 	var Orders []entity.Order
-	if err := entity.DB().Preload("Owner").Raw("SELECT * FROM orders").Find(&Orders).Error; err != nil {
+	if err := entity.DB().Preload("User").Raw("SELECT * FROM orders").Find(&Orders).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
