@@ -52,9 +52,46 @@ func main() {
 			protected.PATCH("payments", controller.UpdatePayment)
 			protected.DELETE("/payments/:id", controller.DeletePayment)
 
+			// Staff Routes
+			protected.GET("/staffs", controller.ListStaffs)
+			protected.GET("/staff/:id", controller.GetStaff)
+			protected.PATCH("/staffs", controller.UpdateStaff)
+			protected.DELETE("/staffs/:id", controller.DeleteStaff)
+
+			// ProductType Routes
+			protected.GET("/producttypes", controller.ListProductTypes)
+			protected.GET("/producttype/:id", controller.GetProductType)
+			protected.POST("/producttypes", controller.CreateProductType)
+			protected.PATCH("/producttypes", controller.UpdateProductType)
+			protected.DELETE("/producttypes/:id", controller.DeleteProductType)
+
+			// Product Routes
+			protected.GET("/products", controller.ListProducts)
+			protected.GET("/product/:id", controller.GetProduct)
+			protected.POST("/products", controller.CreateProduct)
+			protected.PATCH("/products", controller.UpdateProduct)
+			protected.DELETE("/products/:id", controller.DeleteProduct)
+
+			// Supplier Routes
+			protected.GET("/suppliers", controller.ListSuppliers)
+			protected.GET("/supplier/:id", controller.GetSupplier)
+			protected.POST("/suppliers", controller.CreateSupplier)
+			protected.PATCH("/suppliers", controller.UpdateSupplier)
+			protected.DELETE("/suppliers/:id", controller.DeleteSupplier)
+
+			// ProductStock Routes
+			protected.GET("/product_stocks", controller.ListProductStocks)
+			protected.GET("/productstock/:id", controller.GetProductStock)
+			protected.POST("/product_stocks", controller.CreateProductStock)
+			protected.PATCH("/product_stocks", controller.UpdateProductStock)
+			protected.DELETE("/productstocks/:id", controller.DeleteProductStock)
+
 		}
 	}
-
+	
+	// Staff Routes
+	r.POST("/staffs", controller.CreateStaff)
+	
 	// User Routes
 	r.POST("/users", controller.CreateUser)
 
