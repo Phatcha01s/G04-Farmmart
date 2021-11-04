@@ -67,6 +67,12 @@ type Product struct {
 	ProductStocks []ProductStock `gorm:"foreignKey:ProductID"`
 }
 
+type Status struct {
+	gorm.Model
+	Statusorder string
+	
+	Orders []Order `gorm:"foreignKey:StatusID"`
+}
 
 type PaymentMethod struct {
 	gorm.Model
