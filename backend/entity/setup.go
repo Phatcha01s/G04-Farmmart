@@ -121,7 +121,7 @@ func SetupDatabase() {
 	db.Model(&DeliveryType{}).Create(&type1)
 
 	type2 := DeliveryType{
-		Type: "จัดส่งถึงบ้าน",
+		Type: "จัดส่งตามที่อยู่ในระบบ",
 	}
 	db.Model(&DeliveryType{}).Create(&type2)
 
@@ -307,6 +307,23 @@ func SetupDatabase() {
 		OrderTime: time.Now(),
 	}
 	db.Model(&Order{}).Create(&order2)
+
+	order3 := Order{
+		User:      narudee,
+		Preorder:  preorder1,
+		Status:    status1,
+		OrderTime: time.Now(),
+	}
+
+	db.Model(&Order{}).Create(&order3)
+
+	order4 := Order{
+		User:      phatcha,
+		Preorder:  preorder2,
+		Status:    status1,
+		OrderTime: time.Now(),
+	}
+	db.Model(&Order{}).Create(&order4)
 
 	// ระบบสมาชิก
 	// --- ContactType Data
