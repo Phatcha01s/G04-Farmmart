@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(2),
     },
     table: {
-      minWidth: 600,
+      minWidth: 650,
     },
     tableSpace: {
       marginTop: 20,
@@ -61,7 +61,7 @@ function Payments() {
     <div>
       <Container className={classes.container} maxWidth="md">
         <Box display="flex">
-          <Box flexGrow={1}>
+          <Box flexGrow={2}>
             <Typography
               component="h2"
               variant="h6"
@@ -78,7 +78,7 @@ function Payments() {
               variant="contained"
               color="primary"
             >
-              สร้างข้อมูล
+              ชำระเงิน
             </Button>
           </Box>
         </Box>
@@ -89,13 +89,13 @@ function Payments() {
                 <TableCell align="center" width="5%">
                   ลำดับ
                 </TableCell>
-                <TableCell align="center" width="10%">
+                <TableCell align="center" width="15%">
                   หมายเลขคำสั่งซื้อ
                 </TableCell>
-                <TableCell align="center" width="15%">
+                <TableCell align="center" width="10%">
                   ยอดเงิน
                 </TableCell>
-                <TableCell align="center" width="15%">
+                <TableCell align="center" width="20%">
                   ช่องทางการชำระเงิน
                 </TableCell>
                 <TableCell align="center" width="15%">
