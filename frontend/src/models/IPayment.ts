@@ -5,6 +5,7 @@ import { OrdersInterface } from "./IOrder";
 export interface PaymentInterface {
   ID: string,
   Phone: string,
+  Price: Float32Array
   PaymentTime: Date,
   DeliveryTypeID: number,
   DeliveryType: DeliveryTypesInterface,
