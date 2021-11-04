@@ -25,7 +25,7 @@ func CreateOrder(c *gin.Context) {
 func ListOrderbyUser(c *gin.Context) {
 	var Order []entity.Order
 	id := c.Param("id")
-	if err := entity.DB().Preload("Owner").Raw("SELECT * FROM orders WHERE owner_id = ? ",id).Find(&Order).Error; err != nil {
+	if err := entity.DB().Preload("Owner").Raw("SELECT * FROM orders WHERE user_id = ? ",id).Find(&Order).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
