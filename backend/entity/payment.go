@@ -5,18 +5,6 @@ import (
 	"gorm.io/gorm"
 )
 
-type PaymentMethod struct {
-	gorm.Model
-	Method  string
-	Payment []Payment `gorm:"foreignKey:PaymentMethodID"`
-}
-
-type DeliveryType struct {
-	gorm.Model
-	Type    string
-	Payment []Payment `gorm:"foreignKey:DeliveryTypeID"`
-}
-
 type Payment struct {
 	gorm.Model
 	Phone	string
