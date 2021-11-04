@@ -64,28 +64,28 @@ func SetupDatabase() {
 	order1ofPhatcha := Order{
 		PreorderID: 4001,
 		StatusID: 1,
-		Owner: Phatcha,
+		User: Phatcha,
 	}
 	db.Model(&Order{}).Create(&order1ofPhatcha)
 
 	order2ofPhatcha := Order{
 		PreorderID: 4002,
 		StatusID: 1,
-		Owner: Phatcha,
+		User: Phatcha,
 	}
 	db.Model(&Order{}).Create(&order2ofPhatcha)
 
 	order1ofName := Order{
 		PreorderID: 4003,
 		StatusID: 1,
-		Owner: Name,
+		User: Name,
 	}
 	db.Model(&Order{}).Create(&order1ofName)
 
 	order2ofName := Order{
 		PreorderID: 4004,
 		StatusID: 1,
-		Owner: Name,
+		User: Name,
 	}
 	db.Model(&Order{}).Create(&order2ofName)
 
@@ -143,7 +143,7 @@ func SetupDatabase() {
 
 	// order data
 	order1 := Order{
-		Owner:       nana,
+		User:       nana,
 		PreorderID: 20,
 		StatusID:   1,
 		Ordertime:  time.Now(),
@@ -152,7 +152,7 @@ func SetupDatabase() {
 	db.Model(&Order{}).Create(&order1)
 
 	order2 := Order{
-		Owner:       narudee,
+		User:       narudee,
 		PreorderID: 21,
 		StatusID:   1,
 		Ordertime:  time.Now(),
