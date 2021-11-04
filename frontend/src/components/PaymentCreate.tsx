@@ -260,6 +260,20 @@ function PaymentCreate() {
             </FormControl>
           </Grid>
           <Grid item xs={6}>
+            <p>จำนวนเงิน</p>
+            <FormControl fullWidth variant="outlined">
+              <TextField
+                id="Price"
+                variant="outlined"
+                type="string"
+                size="medium"
+                placeholder="กรุณากรอกจำนวนเงิน"
+                value={payment.Phone || ""}
+                onChange={handleInputChange}
+              />
+            </FormControl>
+          </Grid>
+          <Grid item xs={6}>
             <FormControl fullWidth variant="outlined">
               <p>ช่องทางชำระเงิน</p>
               <Select
