@@ -1,8 +1,8 @@
 package entity
 
 import (
-	"time"
 	"gorm.io/gorm"
+	"time"
 )
 
 type Contact struct {
@@ -29,21 +29,21 @@ type Religion struct {
 
 type User struct {
 	gorm.Model
-	Name  string
-	Email string  `gorm:"uniqueIndex"`
+	Name     string
+	Email    string `gorm:"uniqueIndex"`
 	Password string
-	
-	Order []Order `gorm:"foreignkey:OwnerID"`
+
+	Order   []Order  `gorm:"foreignkey:OwnerID"`
 	Returns []Return `gorm:"foreignKey:OwnerID"`
 }
 
 type Staff struct {
 	gorm.Model
-	Name     string
-	Email    string `gorm:"uniqueIndex"`
-	Password string
+	Name          string
+	Email         string `gorm:"uniqueIndex"`
+	Password      string
 	ProductStocks []ProductStock `gorm:"foreignKey:StaffID"`
-	Returns []Return `gorm:"foreignKey:StaffID"`
+	Returns       []Return       `gorm:"foreignKey:StaffID"`
 }
 
 type Supplier struct {
@@ -70,7 +70,7 @@ type Product struct {
 type Status struct {
 	gorm.Model
 	Statusorder string
-	
+
 	Orders []Order `gorm:"foreignKey:StatusID"`
 }
 
@@ -85,6 +85,7 @@ type DeliveryType struct {
 	Type    string
 	Payment []Payment `gorm:"foreignKey:DeliveryTypeID"`
 }
+
 //ระบบย่อย ระบบ
 type Account struct {
 	gorm.Model
@@ -121,7 +122,7 @@ type Preorder struct {
 type Order struct {
 	gorm.Model
 	OrderTime time.Time
-	
+
 	UserID *uint
 	User   User `gorm:"references:id"`
 
@@ -134,16 +135,17 @@ type Order struct {
 	Payment []Payment `gorm:"foreignKey:OrderID"`
 	Returns []Return  `gorm:"foreignKey:OrderID"`
 }
+
 //ระบบย่อย ระบบคลังสินค้า
 type ProductStock struct {
 	gorm.Model
 
 	Price  int
 	Amount int
-	
+
 	ProductID *uint
 	Product   Product `gorm:"references:id"`
-	
+
 	SupplierID *uint
 	Supplier   Supplier `gorm:"references:id"`
 
@@ -152,6 +154,7 @@ type ProductStock struct {
 
 	ProductTime time.Time
 }
+
 //ระบบย่อย ระบบขอคืนสินค้า
 type Return struct {
 	gorm.Model
@@ -171,15 +174,16 @@ type Return struct {
 //ระบบย่อย ระบบการชำระเงิน
 type Payment struct {
 	gorm.Model
-	Phone	string
+	Phone       string
+	Price       float32
 	PaymentTime time.Time
 
 	OrderID *uint
-	Order   Order	`gorm:"references:id"`
+	Order   Order `gorm:"references:id"`
 
 	PaymentMethodID *uint
-	PaymentMethod   PaymentMethod 	`gorm:"references:id"`
+	PaymentMethod   PaymentMethod `gorm:"references:id"`
 
 	DeliveryTypeID *uint
-	DeliveryType   DeliveryType	`gorm:"references:id"`
+	DeliveryType   DeliveryType `gorm:"references:id"`
 }
