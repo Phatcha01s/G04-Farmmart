@@ -3,8 +3,9 @@ package controller
 import (
 	"net/http"
 
-	"github.com/B6202385/G04-Farmmart/entity"
 	"github.com/gin-gonic/gin"
+	"github.com/B6202385/G04-Farmmart/entity"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // GET /staffs
@@ -36,6 +37,19 @@ func GetStaff(c *gin.Context) {
 func CreateStaff(c *gin.Context) {
 	var staff entity.Staff
 	if err := c.ShouldBindJSON(&staff); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	// เข้ารหัสลับรหัสผ่านที่ผู้ใช้กรอกก่อนบันทึกลงฐานข้อมูล
+	bytes, err := bcrypt.GenerateFromPassword([]byte(staff.Password), 14)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "error hashing password"})
+		return
+	}
+	staff.Password = string(bytes)
+
+	if err := entity.DB().Create(&staff).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
