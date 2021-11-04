@@ -116,7 +116,7 @@ type Order struct {
 	gorm.Model
 	PreorderID uint 
 	StatusID uint
-	Ordertime  time.Time
+	OrderTime  time.Time
 
 	UserID    *uint
 	User      User		`gorm:"references:id"`
