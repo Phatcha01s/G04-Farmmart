@@ -63,28 +63,28 @@ func SetupDatabase() {
 	// --- Order Data
 	order1ofPhatcha := Order{
 		PreorderID: 4001,
-		Statusorder: "Confirm",
+		StatusID: 1,
 		Owner: Phatcha,
 	}
 	db.Model(&Order{}).Create(&order1ofPhatcha)
 
 	order2ofPhatcha := Order{
 		PreorderID: 4002,
-		Statusorder: "Confirm",
+		StatusID: 1,
 		Owner: Phatcha,
 	}
 	db.Model(&Order{}).Create(&order2ofPhatcha)
 
 	order1ofName := Order{
 		PreorderID: 4003,
-		Statusorder: "Confirm",
+		Statusorder: 1,
 		Owner: Name,
 	}
 	db.Model(&Order{}).Create(&order1ofName)
 
 	order2ofName := Order{
 		PreorderID: 4004,
-		Statusorder: "Confirm",
+		Statusorder: 1,
 		Owner: Name,
 	}
 	db.Model(&Order{}).Create(&order2ofName)
