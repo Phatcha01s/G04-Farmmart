@@ -55,9 +55,9 @@ func SetupDatabase() {
 	})
 
 	var Phatcha User
-	var name User
+	var Name User
 	db.Raw("SELECT * FROM users WHERE email = ?", "Phatcha@gmail.com").Scan(&Phatcha)
-	db.Raw("SELECT * FROM users WHERE email = ?", "name@example.com").Scan(&name)
+	db.Raw("SELECT * FROM users WHERE email = ?", "name@example.com").Scan(&Name)
 
 	// --- Order Data
 	order1ofPhatcha := Order{
@@ -77,14 +77,14 @@ func SetupDatabase() {
 	order1ofName := Order{
 		PreorderID: 4003,
 		Statusorder: "Confirm",
-		Owner: name,
+		Owner: Name,
 	}
 	db.Model(&Order{}).Create(&order1ofName)
 
 	order2ofName := Order{
 		PreorderID: 4004,
 		Statusorder: "Confirm",
-		Owner: name,
+		Owner: Name,
 	}
 	db.Model(&Order{}).Create(&order2ofName)
 
