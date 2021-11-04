@@ -86,12 +86,19 @@ func main() {
 			protected.PATCH("/product_stocks", controller.UpdateProductStock)
 			protected.DELETE("/productstocks/:id", controller.DeleteProductStock)
 
+			// Return Routes
+			protected.GET("/return_s/:id", controller.ListReturns)
+			protected.GET("/return/:id", controller.GetReturn)
+			protected.POST("/return_s", controller.CreateReturnod)
+			protected.PATCH("/returns", controller.UpdateReturn)
+			protected.DELETE("/return_s/:id", controller.DeleteReturn)
+
 		}
 	}
 	
 	// Staff Routes
 	r.POST("/staffs", controller.CreateStaff)
-	
+
 	// User Routes
 	r.POST("/users", controller.CreateUser)
 
