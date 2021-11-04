@@ -266,10 +266,10 @@ function PaymentCreate() {
               <TextField
                 id="Price"
                 variant="outlined"
-                type="string"
+                type="number"
                 size="medium"
                 placeholder="กรุณากรอกยอดเงิน"
-                value={payment.Phone || ""}
+                value={payment.Price || ""}
                 onChange={handleInputChange}
               />
             </FormControl>
