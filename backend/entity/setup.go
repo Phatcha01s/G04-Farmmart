@@ -40,18 +40,19 @@ func SetupDatabase() {
 
 	db = database
 
-	password1, err := bcrypt.GenerateFromPassword([]byte("123456"), 14)
-	password2, err := bcrypt.GenerateFromPassword([]byte("123580"), 14)
+	passworduser1, err := bcrypt.GenerateFromPassword([]byte("123456"), 14)
+	passworduser2, err := bcrypt.GenerateFromPassword([]byte("123580"), 14)
+	passwordstaff, err := bcrypt.GenerateFromPassword([]byte("123456"), 14)
 
 	db.Model(&User{}).Create(&User{
 		Name:     "Phatcha",
 		Email:    "Phatcha@gmail.com",
-		Password: string(password1),
+		Password: string(passworduser1),
 	})
 	db.Model(&User{}).Create(&User{
 		Name:     "Name",
 		Email:    "name@example.com",
-		Password: string(password2),
+		Password: string(passworduser2),
 	})
 
 	var Phatcha User
@@ -123,18 +124,16 @@ func SetupDatabase() {
 
 	//จอย
 
-	passwordReturn, err := bcrypt.GenerateFromPassword([]byte("123456"), 14)
-
 	// ข้อมูล user
 	db.Model(&User{}).Create(&User{
 		Name:     "Narudee Arunno",
 		Email:    "narudee@gmail.com",
-		Password: string(passwordReturn),
+		Password: string(passworduser1),
 	})
 	db.Model(&User{}).Create(&User{
 		Name:     "Nana Lanana",
 		Email:    "nana@gmail.com",
-		Password: string(passwordReturn),
+		Password: string(passworduser1),
 	})
 
 	var narudee User
@@ -165,29 +164,28 @@ func SetupDatabase() {
 	db.Model(&Staff{}).Create(&Staff{
 		Name:     "Suwanan",
 		Email:    "suwanan@gmail.com",
-		Password: string(passwordReturn),
+		Password: string(passwordstaff),
 	})
 
 	db.Model(&Staff{}).Create(&Staff{
 		Name:     "Name",
 		Email:    "name@example.com",
-		Password: string(passwordReturn),
+		Password: string(passwordstaff),
 	})
 
 	//นุ่น
-	password, err := bcrypt.GenerateFromPassword([]byte("123456"), 14)
 
 	// Staff Data
 	db.Model(&Staff{}).Create(&Staff{
 		Name:     "Suwanan",
 		Email:    "suwanan@gmail.com",
-		Password: string(password),
+		Password: string(passwordstaff),
 	})
 
 	db.Model(&Staff{}).Create(&Staff{
 		Name:     "Name",
 		Email:    "name@example.com",
-		Password: string(password),
+		Password: string(passwordstaff),
 	})
 
 	var suwanan Staff
