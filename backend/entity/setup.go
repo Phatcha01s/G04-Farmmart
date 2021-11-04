@@ -77,14 +77,14 @@ func SetupDatabase() {
 
 	order1ofName := Order{
 		PreorderID: 4003,
-		Statusorder: 1,
+		StatusID: 1,
 		Owner: Name,
 	}
 	db.Model(&Order{}).Create(&order1ofName)
 
 	order2ofName := Order{
 		PreorderID: 4004,
-		Statusorder: 1,
+		StatusID: 1,
 		Owner: Name,
 	}
 	db.Model(&Order{}).Create(&order2ofName)
