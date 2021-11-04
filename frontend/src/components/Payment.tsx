@@ -114,6 +114,7 @@ function Payments() {
                 <TableRow key={item.ID}>
                   <TableCell align="center">{item.ID}</TableCell>
                   <TableCell align="center">{item.Order.ID}</TableCell>
+                  <TableCell align="center">{item.Price}</TableCell>
                   <TableCell align="center">{item.PaymentMethod.Method}</TableCell>
                   <TableCell align="center">{item.DeliveryType.Type}</TableCell>
                   <TableCell align="center">{item.Phone}</TableCell>
