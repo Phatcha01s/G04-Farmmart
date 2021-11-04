@@ -22,7 +22,7 @@ function Home() {
     <div>
       <Container className={classes.container} maxWidth="md">
         <h1 style={{ textAlign: "center" }}>ระบบ Farm  Mart</h1>
-        <h4>Requirements</h4>
+        <h4>ระบบชำระเงิน</h4>
         <p>
           ระบบ Farm mart เป็นระบบที่ผู้ใช้ระบบซึ่งเป็นสมาชิกสามารถ login เข้ามาเพื่อใช้งานระบบ Farm mart
           เพื่อทำการค้นหาสินค้า และเลือกซื้อสินค้าที่สนใจได้ เมื่อสมาชิกกดสั่งซื้อสินค้าในระบบเรียบร้อยแล้ว
