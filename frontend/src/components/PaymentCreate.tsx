@@ -166,7 +166,7 @@ function PaymentCreate() {
     getDeliveryType();
   }, []);
 
-  const convertType = (data: string | number | Float32Array | undefined) => {
+  const convertType = (data: string | number | undefined) => {
     let val = typeof data === "string" ? parseInt(data) : data;
     return val;
   };
@@ -177,6 +177,7 @@ function PaymentCreate() {
       DeliveryTypeID: convertType(payment.DeliveryTypeID),
       OrderID: convertType(payment.OrderID),
       Phone: payment.Phone ?? "",
+      Price: typeof payment.Price === "string" ? parseInt(payment.Price) : 0,
       PaymentTime: selectedDate,
     };
 
@@ -260,14 +261,14 @@ function PaymentCreate() {
             </FormControl>
           </Grid>
           <Grid item xs={6}>
-            <p>จำนวนเงิน</p>
+            <p>ยอดเงิน</p>
             <FormControl fullWidth variant="outlined">
               <TextField
                 id="Price"
                 variant="outlined"
                 type="string"
                 size="medium"
-                placeholder="กรุณากรอกจำนวนเงิน"
+                placeholder="กรุณากรอกยอดเงิน"
                 value={payment.Phone || ""}
                 onChange={handleInputChange}
               />
