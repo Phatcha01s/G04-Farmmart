@@ -134,6 +134,18 @@ func SetupDatabase() {
 		Password: string(password),
 	})
 
+	db.Model(&Staff{}).Create(&Staff{
+		Name:     "Kanyanat",
+		Email:    "kanyanat@gmail.com",
+		Password: string(password),
+	})
+
+	db.Model(&Staff{}).Create(&Staff{
+		Name:     "Sirilak",
+		Email:    "sirilak@gmail.com",
+		Password: string(password),
+	})
+
 	// ProductType Data
 	drink := ProductType{
 		Ptype: "เครื่องดื่ม",
@@ -361,7 +373,7 @@ func SetupDatabase() {
 		Religion: christianity,
 	})
 
-	// Preorder Data 
+	// Preorder Data
 	pre1ofprawarit := Preorder{
 		Amount:        3,
 		User:          prawarit,
