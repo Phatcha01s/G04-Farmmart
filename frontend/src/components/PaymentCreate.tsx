@@ -326,7 +326,6 @@ function PaymentCreate() {
                 variant="outlined"
                 type="string"
                 size="medium"
-                helperText={"กรอกเบอร์โทรศัพท์ 10 หลัก ไม่ต้องใส่ - "}
                 placeholder="กรุณากรอกเบอร์โทรศัพท์"
                 value={payment.Phone || ""}
                 onChange={handleInputChange}
