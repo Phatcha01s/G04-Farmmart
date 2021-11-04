@@ -275,7 +275,22 @@ func SetupDatabase() {
 		Product:       mango,
 		PaymentMethod: Method2,
 	}
-	db.Model(&Preorder{}).Create(&preorder2)
+
+	preorder3 := Preorder{
+		Amount:        1,
+		User:          narudee,
+		Product:       turkey,
+		PaymentMethod: Method1,
+	}
+	db.Model(&Preorder{}).Create(&preorder3)
+
+	preorder4 := Preorder{
+		Amount:        2,
+		User:          phatcha,
+		Product:       milk_banana,
+		PaymentMethod: Method2,
+	}
+	db.Model(&Preorder{}).Create(&preorder4)
 
 	// ระบบสั่งสินค้า
 	// Status Data
@@ -309,7 +324,7 @@ func SetupDatabase() {
 
 	order3 := Order{
 		User:      narudee,
-		Preorder:  preorder1,
+		Preorder:  preorder3,
 		Status:    status1,
 		OrderTime: time.Now(),
 	}
@@ -318,7 +333,7 @@ func SetupDatabase() {
 
 	order4 := Order{
 		User:      phatcha,
-		Preorder:  preorder2,
+		Preorder:  preorder4,
 		Status:    status1,
 		OrderTime: time.Now(),
 	}
