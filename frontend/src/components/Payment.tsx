@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(2),
     },
     table: {
-      minWidth: 650,
+      minWidth: 600,
     },
     tableSpace: {
       marginTop: 20,
