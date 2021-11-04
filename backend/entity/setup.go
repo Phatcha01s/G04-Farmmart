@@ -23,12 +23,6 @@ func SetupDatabase() {
 
 	// Migrate the schema
 	database.AutoMigrate(
-		// ระบบสั่งจองสินค้า
-		&Preorder{},
-
-		// ระบบสั่งสินค้า
-		&Order{},
-		&Status{},
 
 		// สมาชิก
 		&User{},
@@ -37,6 +31,13 @@ func SetupDatabase() {
 		&Sex{},
 		&Religion{},
 		&Account{},
+
+		// ระบบสั่งจองสินค้า
+		&Preorder{},
+
+		// ระบบสั่งสินค้า
+		&Order{},
+		&Status{},
 		
 		// ระบบจ่ายเงิน
 		&PaymentMethod{},
