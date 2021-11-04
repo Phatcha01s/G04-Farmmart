@@ -89,8 +89,11 @@ function Payments() {
                 <TableCell align="center" width="5%">
                   ลำดับ
                 </TableCell>
-                <TableCell align="center" width="15%">
+                <TableCell align="center" width="10%">
                   หมายเลขคำสั่งซื้อ
+                </TableCell>
+                <TableCell align="center" width="15%">
+                  ยอดเงิน
                 </TableCell>
                 <TableCell align="center" width="15%">
                   ช่องทางการชำระเงิน
