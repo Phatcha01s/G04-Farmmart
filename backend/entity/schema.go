@@ -120,17 +120,20 @@ type Preorder struct {
 //ระบบย่อย ระบบสั่งซื้อสินค้า
 type Order struct {
 	gorm.Model
-	PreorderID uint 
-	StatusID uint
-	OrderTime  time.Time
+	OrderTime time.Time
+	
+	UserID *uint
+	User   User `gorm:"references:id"`
 
-	UserID    *uint
-	User      User		`gorm:"references:id"`
+	PreorderID *uint
+	Preorder   Preorder `gorm:"references:id"`
 
-	Payment    []Payment `gorm:"foreignKey:OrderID"`
-	Returns    []Return `gorm:"foreignKey:OrderID"`
+	StatusID *uint
+	Status   Status `gorm:"references:id"`
+
+	Payment []Payment `gorm:"foreignKey:OrderID"`
+	Returns []Return  `gorm:"foreignKey:OrderID"`
 }
-
 //ระบบย่อย ระบบคลังสินค้า
 type ProductStock struct {
 	gorm.Model
