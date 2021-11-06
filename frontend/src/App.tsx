@@ -163,7 +163,7 @@ export default function MiniDrawer() {
                   <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
-                  System Analysis and Design
+                  ระบบ Farm mart
                 </Typography>
                 <Button color="inherit" onClick={signout}>
                   ออกจากระบบ
