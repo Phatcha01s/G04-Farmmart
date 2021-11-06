@@ -3,7 +3,7 @@ import { DeliveryTypesInterface } from "./IDeliverytype";
 import { OrdersInterface } from "./IOrder";
 
 export interface PaymentInterface {
-  ID: string,
+  ID: number,
   Phone: string,
   Price: Float32Array
   PaymentTime: Date,
